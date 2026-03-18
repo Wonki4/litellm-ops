@@ -1,0 +1,8 @@
+.env
+*.png
+tmp/
+backend/.pytest_cache/
+backend/.ruff_cache/
+backend/**/__pycache__/
+backend/**/*.pyc
+frontend/.next/
