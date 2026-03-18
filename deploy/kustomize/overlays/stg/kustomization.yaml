@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: litellm-stg
+namespace: llm-ops-stg
 
 namePrefix: stg-
 
@@ -35,8 +35,8 @@ patches:
 configMapGenerator:
   - name: backend-config
     literals:
-      - APP_DATABASE_URL=postgresql+asyncpg://llmproxy:changeme@db-stg.litellm-stg.svc:5432/litellm
-      - APP_LITELLM_BASE_URL=http://litellm-stg.litellm-stg.svc:4000
+      - APP_DATABASE_URL=postgresql+asyncpg://llmproxy:changeme@db-stg.llm-ops-stg.svc:5432/litellm
+      - APP_LITELLM_BASE_URL=http://llm-ops-stg.llm-ops-stg.svc:4000
       - APP_KEYCLOAK_BASE_URL=https://sso-stg.example.com
       - APP_KEYCLOAK_INTERNAL_URL=https://sso-stg.example.com
       - APP_KEYCLOAK_REALM=litellm
@@ -58,8 +58,8 @@ configMapGenerator:
 
   - name: worker-config
     literals:
-      - APP_DATABASE_URL=postgresql+asyncpg://llmproxy:changeme@db-stg.litellm-stg.svc:5432/litellm
-      - APP_LITELLM_BASE_URL=http://litellm-stg.litellm-stg.svc:4000
+      - APP_DATABASE_URL=postgresql+asyncpg://llmproxy:changeme@db-stg.llm-ops-stg.svc:5432/litellm
+      - APP_LITELLM_BASE_URL=http://llm-ops-stg.llm-ops-stg.svc:4000
 
 secretGenerator:
   - name: backend-secrets

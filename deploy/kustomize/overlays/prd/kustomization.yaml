@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: litellm-prd
+namespace: llm-ops-prd
 
 namePrefix: prd-
 
@@ -69,8 +69,8 @@ patches:
 configMapGenerator:
   - name: backend-config
     literals:
-      - APP_DATABASE_URL=postgresql+asyncpg://llmproxy:changeme@db-prd.litellm-prd.svc:5432/litellm
-      - APP_LITELLM_BASE_URL=http://litellm-prd.litellm-prd.svc:4000
+      - APP_DATABASE_URL=postgresql+asyncpg://llmproxy:changeme@db-prd.llm-ops-prd.svc:5432/litellm
+      - APP_LITELLM_BASE_URL=http://llm-ops-prd.llm-ops-prd.svc:4000
       - APP_KEYCLOAK_BASE_URL=https://sso.example.com
       - APP_KEYCLOAK_INTERNAL_URL=https://sso.example.com
       - APP_KEYCLOAK_REALM=litellm
@@ -92,8 +92,8 @@ configMapGenerator:
 
   - name: worker-config
     literals:
-      - APP_DATABASE_URL=postgresql+asyncpg://llmproxy:changeme@db-prd.litellm-prd.svc:5432/litellm
-      - APP_LITELLM_BASE_URL=http://litellm-prd.litellm-prd.svc:4000
+      - APP_DATABASE_URL=postgresql+asyncpg://llmproxy:changeme@db-prd.llm-ops-prd.svc:5432/litellm
+      - APP_LITELLM_BASE_URL=http://llm-ops-prd.llm-ops-prd.svc:4000
 
 secretGenerator:
   - name: backend-secrets
