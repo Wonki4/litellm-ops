@@ -17,7 +17,8 @@ export async function apiFetch<T>(path: string, options: RequestInit = {}): Prom
 
   if (res.status === 401) {
     if (typeof window !== "undefined") {
-      window.location.href = "/login";
+      const returnTo = encodeURIComponent(window.location.pathname + window.location.search);
+      window.location.replace(`/api/proxy/auth/login?return_to=${returnTo}`);
     }
     throw new AuthError("Session expired. Please log in again.");
   }
